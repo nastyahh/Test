@@ -1,0 +1,195 @@
+.clients-loyalty {
+	background: #ffffff;
+	box-shadow: 1px 4px 7px 1px rgb(37, 47, 64, 0.12);
+	border-radius: 15px 0px 0px 15px;
+
+	overflow: hidden;
+	padding: 15px 0px 20px;
+	width: 100%;
+
+	&__container {
+		width: 100%;
+	}
+
+	&__table {
+		display: flex;
+		flex-direction: column;
+
+		&-row {
+			border-bottom: 1px solid rgb(0, 0, 0, 0.15);
+
+			display: flex;
+			gap: 7vw;
+
+			padding: 0px 20px 15px;
+		}
+
+		&-header {
+			align-items: center;
+			display: flex;
+			gap: 5px;
+
+			color: #788398;
+			font-weight: 400;
+			font-size: clamp(10px, 0.8vw, 14px);
+			text-align: left;
+			white-space: nowrap;
+
+			&:nth-child(1) {
+				flex: 0 0 11.6vw;
+			}
+
+			&:nth-child(2),
+			&:nth-child(4) {
+				flex: 0 0 3vw;
+			}
+
+			&:nth-child(3) {
+				flex: 0 0 6vw;
+			}
+
+			&:nth-child(5) {
+				flex: 0 0 9.25vw;
+			}
+		}
+	}
+
+	&__pagination {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		gap: 5px;
+
+		margin-top: 10px;
+
+		&-arrow {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+
+			background: #f1f4f8;
+			border-radius: 100%;
+
+			height: 32px;
+			width: 32px;
+
+			&.left {
+				margin-right: 10px;
+			}
+
+			&.right {
+				margin-left: 10px;
+			}
+		}
+
+		&-button {
+			align-items: center;
+			display: flex;
+
+			border-radius: 5px;
+			font-size: 14px;
+
+			padding: 0px 20px;
+			height: 32px;
+
+			&.active {
+				border: 1px solid #000000;
+			}
+		}
+	}
+
+	&__add {
+		background: #252f40;
+		border-radius: 10px;
+
+		align-self: center;
+		align-items: center;
+		display: none;
+		justify-content: center;
+		gap: 10px;
+
+		color: #ffffff;
+		font-size: 16px;
+		font-weight: 500;
+
+		margin-top: auto;
+
+		max-width: 325px;
+		height: 50px;
+		width: 100%;
+	}
+}
+
+@media (max-width: 1100px) {
+	.clients-loyalty {
+		border-radius: 15px;
+
+		margin-left: 15px;
+		width: calc(100% - 30px);
+
+		&__container {
+			overflow-x: overlay;
+
+			&::-webkit-scrollbar-button:start:decrement,
+			&::-webkit-scrollbar-button:end:increment {
+				width: 15px !important;
+			}
+		}
+
+		&__table {
+			min-width: 1000px;
+
+			&-row {
+				gap: 75px;
+				padding: 0px 15px 15px;
+			}
+
+			&-header {
+				color: #252f40;
+				font-size: 12px;
+				font-weight: 600;
+
+				&:nth-child(1) {
+					flex: 0 0 160px;
+				}
+
+				&:nth-child(2) {
+					flex: 0 0 50px;
+				}
+
+				&:nth-child(3) {
+					flex: 0 0 90px;
+				}
+
+				&:nth-child(4) {
+					flex: 0 0 50px;
+				}
+
+				&:nth-child(5) {
+					flex: 0 0 130px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.clients-loyalty__pagination {
+		display: flex;
+
+		&-arrow {
+			height: 22px;
+			width: 22px;
+		}
+
+		&-button {
+			font-size: 12px;
+			height: 22px;
+		}
+	}
+
+	.clients-loyalty__add {
+		display: flex;
+		margin-bottom: 40px;
+	}
+}
