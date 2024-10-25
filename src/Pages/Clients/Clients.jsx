@@ -14,6 +14,12 @@ function Clients() {
 
 	const [isAddFormVisible, setIsAddFormVisible] = useState(false);
 	const [isPopupVisible, setIsPopupVisible] = useState(false);
+	const [selectedClient, setSelectedClient] = useState(null);
+
+	const handleClientClick = (client) => {
+		setSelectedClient(client);
+		setIsPopupVisible((prev) => !prev)
+	};
 
 	useBlackout([isAddFormVisible, isPopupVisible]);
 
@@ -57,7 +63,7 @@ function Clients() {
 							<Client
 								key={item.clientid}
 								id={item.clientid}
-								checkMore={() => setIsPopupVisible((prev) => !prev)}
+								checkMore={() => handleClientClick(item)}
 								src={item.src}
 								name={item.name}
 								phone={item.phone}
@@ -94,6 +100,7 @@ function Clients() {
 			<ClientsPopup
 				isVisible={isPopupVisible}
 				setIsVisible={setIsPopupVisible}
+				userData={selectedClient}
 			/>
 		</>
 	);

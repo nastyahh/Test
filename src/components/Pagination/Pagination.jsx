@@ -9,7 +9,8 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
                 disabled={currentPage === 1}
             >
                 <svg className='clients__pagination-icon' height='17' width='17'>
-                    <use xlinkHref='./icons/Clients_Sprite.svg#icon-clients-arrow-left' />
+                    <use xlinkHref='../../assets/icons/Clients_Sprite.svg#icon-clients-arrow-left' />
+                    {/* <use xlinkHref='./icons/Clients_Sprite.svg#icon-clients-arrow-left' /> */}
                 </svg>
             </button>
             {Array.from({ length: totalPages }, (_, i) => (
@@ -27,7 +28,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
                 disabled={currentPage === totalPages}
             >
                 <svg className='clients__pagination-icon' height='17' width='17'>
-                    <use xlinkHref='./icons/Clients_Sprite.svg#icon-clients-arrow-right' />
+                    <use xlinkHref="../../assets/icons/Header_Sprite.svg#icon-header-add" />
                 </svg>
             </button>
         </div>

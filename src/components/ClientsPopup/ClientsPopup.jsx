@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './ClientsPopup.scss';
 
-function ClientsPopup({ isVisible, setIsVisible }) {
+function ClientsPopup({ isVisible, setIsVisible, userData }) {
 	const [activeTab, setActiveTab] = useState(1);
 
 	return (
@@ -28,47 +28,42 @@ function ClientsPopup({ isVisible, setIsVisible }) {
 					<div className='clients-popup__wrapper'>
 						<img alt='Жуков Антон' src='./img/1.png' />
 					</div>
-					<h2 className='clients-popup__title'>Жуков Антон</h2>
-					<span className='clients-popup__text'>Клиент #2973591</span>
+					<h2 className='clients-popup__title'>{userData && userData.name}</h2>
+					<span className='clients-popup__text'>{userData && userData.clientid}</span>
 				</div>
 				<ul className='clients-popup__tabs'>
 					<li
 						onClick={() => setActiveTab(1)}
-						className={`clients-popup__tabs-el ${
-							activeTab === 1 ? 'active' : ''
-						}`}
+						className={`clients-popup__tabs-el ${activeTab === 1 ? 'active' : ''
+							}`}
 					>
 						Данные клиента
 					</li>
 					<li
 						onClick={() => setActiveTab(2)}
-						className={`clients-popup__tabs-el ${
-							activeTab === 2 ? 'active' : ''
-						}`}
+						className={`clients-popup__tabs-el ${activeTab === 2 ? 'active' : ''
+							}`}
 					>
 						Визиты
 					</li>
 					<li
 						onClick={() => setActiveTab(3)}
-						className={`clients-popup__tabs-el ${
-							activeTab === 3 ? 'active' : ''
-						}`}
+						className={`clients-popup__tabs-el ${activeTab === 3 ? 'active' : ''
+							}`}
 					>
 						Статистика
 					</li>
 					<li
 						onClick={() => setActiveTab(4)}
-						className={`clients-popup__tabs-el ${
-							activeTab === 4 ? 'active' : ''
-						}`}
+						className={`clients-popup__tabs-el ${activeTab === 4 ? 'active' : ''
+							}`}
 					>
 						Лояльность
 					</li>
 					<li
 						onClick={() => setActiveTab(5)}
-						className={`clients-popup__tabs-el ${
-							activeTab === 5 ? 'active' : ''
-						}`}
+						className={`clients-popup__tabs-el ${activeTab === 5 ? 'active' : ''
+							}`}
 					>
 						Телефония
 					</li>
@@ -83,7 +78,7 @@ function ClientsPopup({ isVisible, setIsVisible }) {
 								<input
 									readOnly
 									className='clients-popup__input'
-									value='+7 987 984 65-76'
+									value={userData && userData.phone}
 									id='phone'
 									type='tel'
 								/>
@@ -95,7 +90,7 @@ function ClientsPopup({ isVisible, setIsVisible }) {
 								<input
 									readOnly
 									className='clients-popup__input'
-									value='12.02.1992'
+									value={userData && userData.dateofbirth}
 									id='date'
 									type='text'
 								/>
@@ -131,7 +126,7 @@ function ClientsPopup({ isVisible, setIsVisible }) {
 								<input
 									readOnly
 									className='clients-popup__input'
-									value='09.07.2024, 13:32'
+									value={userData && userData.Info.Visits[0].Date}
 									id='creating'
 									type='text'
 								/>
@@ -153,58 +148,14 @@ function ClientsPopup({ isVisible, setIsVisible }) {
 								<span className='clients-popup__table-header'>Стоимость</span>
 								<span className='clients-popup__table-header'>Услуга</span>
 								<span className='clients-popup__table-header'>Мастер</span>
-								<span className='clients-popup__table-item'>04.10.2024</span>
-								<span className='clients-popup__table-item'>2 750₽</span>
-								<span className='clients-popup__table-item'>Массаж спины</span>
-								<span className='clients-popup__table-item'>
-									Кузьмин Михаил
-								</span>
-								<span className='clients-popup__table-item'>02.09.2024</span>
-								<span className='clients-popup__table-item'>4 800₽</span>
-								<span className='clients-popup__table-item'>
-									Комплексный массаж
-								</span>
-								<span className='clients-popup__table-item'>
-									Кузьмин Михаил
-								</span>
-								<span className='clients-popup__table-item'>06.07.2024</span>
-								<span className='clients-popup__table-item'>3 800₽</span>
-								<span className='clients-popup__table-item'>Аренда сауны</span>
-								<span className='clients-popup__table-item'>Медведев Юрий</span>
-								<span className='clients-popup__table-item'>17.05.2024</span>
-								<span className='clients-popup__table-item'>4 500₽</span>
-								<span className='clients-popup__table-item'>
-									Релаксотерапия
-								</span>
-								<span className='clients-popup__table-item'>
-									Галиченко Ольга
-								</span>
-								<span className='clients-popup__table-item'>04.10.2024</span>
-								<span className='clients-popup__table-item'>2 750₽</span>
-								<span className='clients-popup__table-item'>Массаж спины</span>
-								<span className='clients-popup__table-item'>
-									Кузьмин Михаил
-								</span>
-								<span className='clients-popup__table-item'>02.09.2024</span>
-								<span className='clients-popup__table-item'>4 800₽</span>
-								<span className='clients-popup__table-item'>
-									Комплексный массаж
-								</span>
-								<span className='clients-popup__table-item'>
-									Кузьмин Михаил
-								</span>
-								<span className='clients-popup__table-item'>06.07.2024</span>
-								<span className='clients-popup__table-item'>3 800₽</span>
-								<span className='clients-popup__table-item'>Аренда сауны</span>
-								<span className='clients-popup__table-item'>Медведев Юрий</span>
-								<span className='clients-popup__table-item'>17.05.2024</span>
-								<span className='clients-popup__table-item'>4 500₽</span>
-								<span className='clients-popup__table-item'>
-									Релаксотерапия
-								</span>
-								<span className='clients-popup__table-item'>
-									Галиченко Ольга
-								</span>
+								{userData.Info.Visits.map((visit, index) => (
+									<>
+										<span className='clients-popup__table-item'>{visit.Date}</span>
+										<span className='clients-popup__table-item'>{visit.Cost}₽</span>
+										<span className='clients-popup__table-item'>Услуга #{visit.Service}</span>
+										<span className='clients-popup__table-item'>Мастер #{visit.employees_id}</span>
+									</>
+								))}
 							</div>
 							<div className='clients-popup__table-mobile'>
 								<div className='clients-popup__block'>
@@ -239,25 +190,25 @@ function ClientsPopup({ isVisible, setIsVisible }) {
 								<span className='clients-popup__criteria'>
 									Количество записей
 								</span>
-								<span className='clients-popup__value'>30</span>
+								<span className='clients-popup__value'>{userData && userData.Info.Stats[0].Records}</span>
 							</div>
 							<div className='clients-popup__row'>
 								<span className='clients-popup__criteria'>Общий доход</span>
-								<span className='clients-popup__value'>43 567₽</span>
+								<span className='clients-popup__value'>{userData && userData.Info.Stats[0].sum}</span>
 							</div>
 							<div className='clients-popup__row'>
 								<span className='clients-popup__criteria'>Средний чек</span>
-								<span className='clients-popup__value'>2 500₽</span>
+								<span className='clients-popup__value'>{userData && userData.Info.Stats[0].AverageCheck}</span>
 							</div>
 							<div className='clients-popup__row'>
 								<span className='clients-popup__criteria'>Последний визит</span>
-								<span className='clients-popup__value'>8</span>
+								<span className='clients-popup__value'>{userData && userData.Info.Stats[0].lastvisit}</span>
 							</div>
 							<div className='clients-popup__row'>
 								<span className='clients-popup__criteria'>
 									Дни с последнего визита
 								</span>
-								<span className='clients-popup__value'>12</span>
+								<span className='clients-popup__value'>{userData && userData.Info.Stats[0].Passed}</span>
 							</div>
 						</div>
 					)}
